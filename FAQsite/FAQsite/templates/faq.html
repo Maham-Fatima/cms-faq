@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}FAQ - Frequently Asked Questions{% endblock title %}
+
+{% block content %}
+{% for category, questions in categorized_questions.items %}
+
+<h2 class="fw-bolder mb-3">{{ category }}</h2>
+<div class="accordion mb-5" id="accordion_{{ forloop.counter }}">
+    {% for question in questions %}
+    <div class="accordion-item">
+        <h3 class="accordion-header" id="heading{{ question.id }}">
+            <button class="accordion-button {% if not forloop.first %}collapsed{% endif %}" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapse{{ question.id }}"
+                aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="collapse{{ question.id }}">
+                {{ question.title }}
+               
+            </button>
+        </h3>
+        <div id="collapse{{ question.id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+            aria-labelledby="heading{{ question.id }}" data-bs-parent="#accordion_{{ forloop.parentloop.counter }}">
+            <div class="accordion-body">
+                <p><strong>Question:</strong> {{ question.question }}</p>
+                <p> {{ question.created_at|date:"Y-m-d H:i"}}</p>
+                <hr>
+                {% if question.answers.all %}
+                {% for answer in question.answers.all %}
+                <p><strong>{{ answer.user.username }}:</strong> {{ answer.answer }}</p>
+                {% endfor %}
+                {% else %}
+                <p class="text-muted">No answers yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No questions in this category yet.</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+    <div class="text-center my-4">
+        <a href="{% url 'ask_question' %}" class="btn btn-primary">Ask a New Question</a>
+    </div>
+
+    {% endif %}
+</div>
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+	{% placeholder "content" %}
+    <div class="container">
+        <h1>Welcome to the FAQ Site about page</h1>
+        <p>This is a simple FAQ site built with Django CMS.</p>
+    </div> 
+{% endblock content %}

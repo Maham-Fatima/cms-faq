@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>Ask a Question</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Question</label>
+            <textarea name="question" rows="4" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select name="visibility" class="form-select">
+                <option value="">-- Select Visibility --</option>
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+            </select>
+            <select name="category" class="form-select" required>
+                <option value="">-- Select Category --</option>
+                <option value="Service Complain">Service Complain</option>
+                <option value="Policies">Policies</option>
+                <option value="Account & Billing">Account & Billing</option>
+                <option value="Application Issues">Application Issues</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Question</button>
+    </form>
+</div>
+{% endblock %}

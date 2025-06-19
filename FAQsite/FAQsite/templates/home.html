@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+{% placeholder "content" %}
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+  </div>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <!-- Slide 1 -->
+    <div class="carousel-item active position-relative">
+      <img src="{% static 'bank.jpg' %}" class="d-block w-100" style="height: 400px; object-fit: cover;" alt="Slide 1">
+      <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <p>Where trust meets innovation. For over 20 years, we have been committed to empowering individuals, businesses, and communities through secure, customer-focused financial services.</p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item position-relative">
+      <img src="{% static 'faq.jpg' %}" class="d-block w-100" style="height: 400px; object-fit: cover;" alt="Slide 2">
+      <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <ul class="list-unstyled">
+          <li>✅ Public & Private Questions</li>
+          <li>📁 Question Categories</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item position-relative">
+      <img src="{% static 'customer.jpg' %}" class="d-block w-100" style="height: 400px; object-fit: cover;" alt="Slide 3">
+      <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+        <p>Our customers are at the heart of everything we do. We believe in building strong, lasting relationships through transparency, trust, and a deep understanding of your needs.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+
+
+<h1>Welcome to the FAQ Site home page</h1>
+
+</div>
+{% endblock content %}
